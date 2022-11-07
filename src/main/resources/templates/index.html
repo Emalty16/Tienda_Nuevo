@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TechShop</title>
+        <meta charset="UTF-8">     
+        <link href="/css/menu.css" rel="stylesheet" type="text/css"/> 
+    </head>
+    <body>
+        <header th: replace="layout/plantilla :: header"/>
+        <div class="contenido">
+        
+        <h2>Nuestros articulos</h2>
+
+        <div th:if="${articulos != null and !articulos.empty}">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Descripcion</th>
+                        <th>Precio</th>
+                        <th>Comprar</th>    
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="articulo: ${articulos}">
+                        <td th:text="${articulo.descripcion}"></td>
+                        <td th:text="${articulo.precio}"></td>
+                        <td><a th:href="@{/carrito/agregar/} + ${arituclo.idArticulo}">Agregar</a></td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div th:if="${articulos == null or ariculos.empty}">
+            La lista de articulos esta vacia 
+        </div>
+
+
+    </body>
+</html>
