@@ -21,6 +21,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <tr>
                         <th>Descripcion</th>
                         <th>Activa</th>
+                        <th>Modifica</th>
+                        <th>Elimina</th>
 
                     </tr>
                 </thead>
@@ -28,7 +30,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <tr th:each="categoria: ${categorias}">
                         <td th:text="${categoria.descripcion}"></td>
                         <td><input type="checkbox" name="activo" th:checked="${categoria.activo}" disabled="true"> </td>
-
                         <td><a th:href="@{/categoria/eliminar/} + ${categoria.idCategoria}">Eliminar</a></td>
                         <td><a th:href="@{/categoria/modificar/} + ${categoria.idCategoria}">Modificar</a></td>
 

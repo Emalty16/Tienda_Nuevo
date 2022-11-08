@@ -3,6 +3,7 @@ package com.Tienda_L.service;
 
 import com.Tienda_L.dao.ClienteDao;
 import com.Tienda_L.dao.CreditoDao;
+import com.Tienda_L.domain.Articulo;
 import com.Tienda_L.domain.Cliente;
 import com.Tienda_L.domain.Credito;
 import java.util.List;

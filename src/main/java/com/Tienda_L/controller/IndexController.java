@@ -21,7 +21,9 @@ public class IndexController {
     public String inicio(Model model){        
         log.info("Ahora se usa arquitectura MVC");
         
-        var articulos = articuloService.getArticulos(true);        
+        var articulos = articuloService.getArticulos(true);  
+        
+        //var articulos = articuloService.findByExistenciasIDCategoria(5,new Long(4));
         
         model.addAttribute("articulos",articulos);      
         return "index";

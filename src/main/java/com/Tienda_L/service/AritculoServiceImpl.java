@@ -45,5 +45,14 @@ ArticuloDao articuloDao;
         articuloDao.delete(categoria);
     }
     
-   
+
+    @Override
+    public List<Articulo> getPorExistencias(int existencias) {
+        return articuloDao.findByExistencias(existencias);
+    }
+
+    @Override
+    public List<Articulo> findByExistenciasOrIdCategoria(int existencias, Long idCategoria) {
+        return articuloDao.findByExistenciasOrIdCategoria(existencias, idCategoria);
+    }
 }
