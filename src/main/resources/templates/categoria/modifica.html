@@ -10,7 +10,7 @@
     <body>
         <header th:replace="layout/plantilla :: header"/>
         <div class="contenido">
-            <h2>Datos del Categoria</h2>
+            <h2>Datos de la Categoria</h2>
             <a th:href="@{/categoria/listado}">Regresar</a>
             <br/>
             <form th:action="@{/cliente/guardar}"
@@ -20,11 +20,11 @@
                 <label for="descripcion">Descripcion: </label>
                 <input type="text" name="descripcion" th:field="*{descripcion}" />
                 <br/>
-                <label for="activa">Activa </label>
-                <input type="checkbox" name="Activa" th:field="*{activa}" />
+                <label for="activo">Activo </label>
+                <input type="checkbox" name="Activo" th:field="*{activo}" />
 
                 <br/><br/>
-                <input type="submit" name="Guardar" value="Guadar" />
+                <input type="submit" name="guardar" value="Guadar" />
             </form>
         </div>
         <footer th:replace="layout/plantilla :: footer"/>

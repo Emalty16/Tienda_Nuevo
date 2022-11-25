@@ -9,7 +9,7 @@ import org.springframework.data.repository.CrudRepository;
 public interface ArticuloDao extends CrudRepository<Articulo, Long> {
     
     
-    List<Articulo> findByExistencias (int existencias);
+   List<Articulo> findByExistencias (int existencias);
     
    public List<Articulo> findByExistenciasOrIdCategoria (int existencias, Long IdCategoria);
 }

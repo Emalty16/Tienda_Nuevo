@@ -1,9 +1,7 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <head>
         <title>TechShop</title>
         <meta charset="UTF-8">     
@@ -11,18 +9,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     </head>
     <body>
         <header th: replace="layout/plantilla :: header"/>
-        <div class="contenido">
-        
-        <h2>Listado de Articulos</h2>
-        <a th:href="@{/articulo/nuevo}">Nuevo Articulo</a>
+        <div class="contenido">    
+        <h2 th:href="#{articulo.titulo}">Listado de Articulos</h2>
+        <a th:href="@{/aticulo/nuevo}" sec:authorize="hasRole('ROLE_ADMIN')">[[#{articulo.nuevo}]]</a>
         <div th:if="${articulos != null and !articulos.empty}">
             <table border="1">
                 <thead>
                     <tr>
-                        <th>Descripcion</th>
-                        <th>Precio</th>
-                        <th>Existencias</th>
-                        <th>Activa</th>
+                        <th th:href="#{articulo.descripcion}">Descripcion</th>
+                        <th th:href="#{articulo.precio}">Precio</th>
+                        <th th:href="#{articulo.existencia}">Existencias</th>
+                        <th th:href="#{articulo.activo}">Activa</th>
+                        <th sec: authorize="hasRole('ROLE_ADMIN')">[[#{accion.eliminar}]]</th>
+                        <th sec: authorize="hasRole('ROLE_ADMIN')">[[#{accion.actualizar}]]</th>
 
                     </tr>
                 </thead>
@@ -32,9 +31,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                         <td th:text="${#number.formatDecimal(articulo.precio,3,2)}" style="text-align: right"></td>
                         <td th:text="${articulo.existencias}" style="text-align: center"></td>
                         <td><input type="checkbox" name="activo" th:checked="${articulo.activo}" disabled="true"></td>
-                        <td><a th:href="@{/articulo/eliminar/} + ${articulo.idArticulo}">Eliminar</a></td>
-                        <td><a th:href="@{/articulo/modificar/} + ${articulo.idArticulo}">Modificar</a></td>
-
+                        <td sec:authorize="hasRole('ROLE_ADMIN')">
+                            <a th:href="@{/articulo/eliminar/} + ${articulo.idArticulo}">[[#{accion.eliminar}]]</a></td>
+                        <td sec:authorize="hasRole('ROLE_ADMIN')">
+                            <a th:href="@{/articulo/modificar/} + ${articulo.idArticulo}">[[#{accion.actualizar}]]</a></td>
                     </tr>
                 </tbody>
             </table>
