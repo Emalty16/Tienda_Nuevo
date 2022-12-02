@@ -49,5 +49,5 @@ public class ClienteServiceImpl implements ClienteService {
     public void delete(Cliente cliente) {
         clienteDao.delete(cliente);
     }
-    
+
 }
